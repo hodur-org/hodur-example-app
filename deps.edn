@@ -1,0 +1,33 @@
+{:paths ["src" "resources"]
+
+ :deps
+ {org.clojure/clojure           {:mvn/version "1.9.0"}
+  com.datomic/client-cloud      {:mvn/version "0.8.66"
+                                 :exclusions [org.eclipse.jetty/jetty-http
+                                              org.eclipse.jetty/jetty-util
+                                              org.eclipse.jetty/jetty-io]}
+  com.datomic/ion               {:mvn/version "0.9.26"}
+  com.walmartlabs/lacinia       {:mvn/version "0.30.0"}
+  hodur/datomic-schema          {:mvn/version "0.1.0"}
+  hodur/engine                  {:mvn/version "0.1.2"}
+  hodur/lacinia-schema          {:mvn/version "0.1.1"}
+  hodur/lacinia-datomic-adapter {:local/root "../hodur-lacinia-datomic-adapter"}}
+
+ :mvn/repos {"datomic-cloud" {:url "s3://datomic-releases-1fc2183a/maven/releases"}}
+
+ :aliases
+ {:dev
+  {:extra-deps
+   {com.datomic/ion-dev {:mvn/version "0.9.176"}}}
+
+  :visualizer
+  {:extra-deps
+   {hodur/visualizer-schema {:mvn/version "0.1.1"}}
+   :main-opts ["-m" "hodur-visualizer-schema.main"
+               "hodur-example-app.visualizer"]}
+
+  :graphviz
+  {:extra-deps
+   {hodur/graphviz-schema {:mvn/version "0.1.0"}}
+   :extra-paths ["dev"]
+   :main-opts ["-m" "graphviz"]}}}
