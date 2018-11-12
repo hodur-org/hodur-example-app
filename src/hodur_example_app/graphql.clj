@@ -21,7 +21,7 @@
   (respond 400 {:error error}))
 
 (defn ^:private respond-server-error [ex]
-  (respond 500 {:error {:cause (ex-data ex)}}))
+  (respond 500 {:error {:stack-trace (Throwable->map ex)}}))
 
 (defn ^:private is-graphql-request? [headers]
   (= "application/graphql" (get headers :content-type)))
