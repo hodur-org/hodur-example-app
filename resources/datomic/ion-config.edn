@@ -5,4 +5,4 @@
             :description "GraphQL Endpoint"
             :integration :api-gateway/proxy}}
 
- :app-name "datomic-cloud-luchini"}
+ :app-name "brainiac"}

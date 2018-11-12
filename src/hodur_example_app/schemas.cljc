@@ -157,7 +157,7 @@
      employee
      [^{:type String
         :lacinia->datomic.param/lookup-ref :employee/email
-        :lacinia->datomic.param/transform user/transform-email}
+        :lacinia->datomic.param/transform hodur-example-app.resolvers/transform-email}
       email]
 
      ^{:type EmployeeList
@@ -165,7 +165,7 @@
      employees
      [^{:type String
         :optional true
-        :lacinia->datomic.param/filter-builder user/new-build-employee-name-search-where}
+        :lacinia->datomic.param/filter-builder hodur-example-app.resolvers/build-employee-name-search-where}
       name-search
       ^{:type Integer
         :optional true
