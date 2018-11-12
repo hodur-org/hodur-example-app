@@ -3,7 +3,9 @@
 (def shared
   '[^:graphviz/tag
     default
-    
+
+    ^{:datomic/tag true
+      :lacinia/tag true}
     Employee
     [^{:type String
        :datomic/tag true
@@ -159,8 +161,7 @@
       email]
 
      ^{:type EmployeeList
-       :lacinia->datomic.query/type :many
-       :lacinia/resolve :project/upsert}
+       :lacinia->datomic.query/type :many}
      employees
      [^{:type String
         :optional true

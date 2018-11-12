@@ -1,0 +1,8 @@
+{:allow [hodur-example-app.core/graphql-ion]
+
+ :lambdas {:graphql
+           {:fn hodur-example-app.core/graphql-ion
+            :description "GraphQL Endpoint"
+            :integration :api-gateway/proxy}}
+
+ :app-name "datomic-cloud-luchini"}
