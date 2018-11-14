@@ -48,6 +48,10 @@
         variables (:variables parsed-body)]
     (lacinia/execute compiled-schema query variables context)))
 
+(defn ^:private run-graphql-query
+  [compiled-schema query vars context]
+  (lacinia/execute compiled-schema query vars context))
+
 (defn ^:private get-response [{:keys [headers body]}
                               compiled-schema context]
   (let [transformed-headers (transform-keys ->kebab-case-keyword headers)]
@@ -57,11 +61,12 @@
         (if (is-graphql-request? transformed-headers)
           ;; we are supporting both "raw" GraphQL queries inside of request body
           ;; and Graphqurl json request body
-          (respond-ok (lacinia/execute compiled-schema body nil context'))
+          (respond-ok (run-graphql-query compiled-schema body nil context'))
           (respond-ok (run-json-query compiled-schema body context'))))
       ;; request headers and body is included in response for debugging purposes
       ;; we can remove it later if needed
       (respond-user-error {:message "Invalid request." :headers transformed-headers :body body}))))
+
 (defn ^:private respond-to-query [{:keys [headers body] :as payload}
                                   compiled-schema context]
   (try

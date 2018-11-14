@@ -84,12 +84,3 @@
 
 (def graphql-ion
   (api-gateway/ionize graphql-ion-handler))
-
-
-#_(lacinia/execute compiled-schema "
-{
-  employee(email: \"tl@work.co\") {
-    firstName
-  }
-}"
-                   nil {:db (datomic/db (get-connection))})
