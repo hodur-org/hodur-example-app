@@ -10,7 +10,8 @@
   hodur/datomic-schema          {:mvn/version "0.1.0"}
   hodur/engine                  {:mvn/version "0.1.2"}
   hodur/lacinia-schema          {:mvn/version "0.1.1"}
-  hodur/lacinia-datomic-adapter {:local/root "../hodur-lacinia-datomic-adapter"}}
+  hodur/lacinia-datomic-adapter {:git/url "https://github.com/luchiniatwork/hodur-lacinia-datomic-adapter"
+                                 :sha "33212f4f0f978b669e8ff62253ef73cd336851b9"} #_{:local/root "../hodur-lacinia-datomic-adapter"}}
 
  :mvn/repos {"datomic-cloud" {:url "s3://datomic-releases-1fc2183a/maven/releases"}}
 
